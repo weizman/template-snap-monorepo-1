@@ -1,4 +1,4 @@
-import { OnRpcRequestHandler } from '@metamask/snap-types';
+import { OnRpcRequestHandler } from '@metamask/snaps-types';
 
 /**
  * Get a message from the origin. For demonstration purposes only.
@@ -21,15 +21,16 @@ export const getMessage = (originString: string): string =>
  * @throws If the `snap_confirm` call failed.
  */
 export const onRpcRequest: OnRpcRequestHandler = ({ origin, request }) => {
+  debugger;
   switch (request.method) {
     case 'hello':
-      return wallet.request({
+      return snap.request({
         method: 'snap_confirm',
         params: [
           {
             prompt: getMessage(origin),
             description:
-              'This custom confirmation is just for display purposes.',
+              'This custom confirmation 123 is just for display purposes.',
             textAreaContent:
               'But you can edit the snap source code to make it do something, if you want to!',
           },
